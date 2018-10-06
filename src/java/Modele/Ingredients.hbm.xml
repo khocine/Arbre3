@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 12, 2018 9:59:39 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="Modele.Ingredients" optimistic-lock="version" schema="ETEAM1" table="INGREDIENTS">
+    <id name="idIngredient" type="string">
+      <column length="3" name="ID_INGREDIENT"/>
+      <generator class="assigned"/>
+    </id>
+    <set fetch="select" inverse="true" lazy="true" name="produitses" table="PRODUITS_INGREDIENTS">
+      <key>
+        <column length="3" name="ID_INGREDIENT" not-null="true"/>
+      </key>
+      <many-to-many entity-name="Modele.Produits">
+        <column length="6" name="CODE_PRODUIT" not-null="true"/>
+      </many-to-many>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="ingredientsLangueses" table="INGREDIENTS_LANGUES">
+      <key>
+        <column length="3" name="ID_INGREDIENT" not-null="true"/>
+      </key>
+      <one-to-many class="Modele.IngredientsLangues"/>
+    </set>
+  </class>
+</hibernate-mapping>

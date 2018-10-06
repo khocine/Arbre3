@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 12, 2018 9:59:39 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="Modele.LignesCommande" optimistic-lock="version" schema="ETEAM1" table="LIGNES_COMMANDE">
+    <composite-id class="Modele.LignesCommandeId" name="id">
+      <key-property name="codeProduit" type="string">
+        <column length="6" name="CODE_PRODUIT"/>
+      </key-property>
+      <key-property name="idCommande" type="string">
+        <column length="5" name="ID_COMMANDE"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="Modele.Produits" fetch="select" insert="false" name="produits" update="false">
+      <column length="6" name="CODE_PRODUIT" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="Modele.Commandes" fetch="select" insert="false" name="commandes" update="false">
+      <column length="5" name="ID_COMMANDE" not-null="true"/>
+    </many-to-one>
+    <property name="quantite" type="short">
+      <column name="QUANTITE" not-null="true" precision="4" scale="0"/>
+    </property>
+  </class>
+</hibernate-mapping>

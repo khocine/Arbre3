@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 12, 2018 9:59:39 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="Modele.Factures" optimistic-lock="version" schema="ETEAM1" table="FACTURES">
+    <id name="codeFacture" type="string">
+      <column length="10" name="CODE_FACTURE"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="Modele.Commandes" fetch="select" name="commandes">
+      <column length="5" name="ID_COMMANDE" not-null="true"/>
+    </many-to-one>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 12, 2018 9:59:39 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="Modele.IngredientsLangues" optimistic-lock="version" schema="ETEAM1" table="INGREDIENTS_LANGUES">
+    <composite-id class="Modele.IngredientsLanguesId" name="id">
+      <key-property name="idIngredient" type="string">
+        <column length="3" name="ID_INGREDIENT"/>
+      </key-property>
+      <key-property name="codeLangue" type="string">
+        <column length="3" name="CODE_LANGUE"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="Modele.Ingredients" fetch="select" insert="false" name="ingredients" update="false">
+      <column length="3" name="ID_INGREDIENT" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="Modele.Langues" fetch="select" insert="false" name="langues" update="false">
+      <column length="3" name="CODE_LANGUE" not-null="true"/>
+    </many-to-one>
+    <property name="nomIngredients" type="string">
+      <column length="100" name="NOM_INGREDIENTS" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 12, 2018 9:59:39 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="Modele.Administrateurs" optimistic-lock="version" schema="ETEAM1" table="ADMINISTRATEURS">
+    <id name="codeAdmin" type="string">
+      <column length="80" name="CODE_ADMIN"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="fonction" type="string">
+      <column length="50" name="FONCTION" not-null="true"/>
+    </property>
+    <property name="nom" type="string">
+      <column length="60" name="NOM" not-null="true"/>
+    </property>
+    <property name="prenom" type="string">
+      <column length="60" name="PRENOM" not-null="true"/>
+    </property>
+    <property name="mdp" type="string">
+      <column length="25" name="MDP" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

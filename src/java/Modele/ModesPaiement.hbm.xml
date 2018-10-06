@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 12, 2018 9:59:39 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="Modele.ModesPaiement" optimistic-lock="version" schema="ETEAM1" table="MODES_PAIEMENT">
+    <id name="idModesPaiement" type="string">
+      <column length="3" name="ID_MODES_PAIEMENT"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="nom" type="string">
+      <column length="80" name="NOM" unique="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="commandeses" table="COMMANDES">
+      <key>
+        <column length="3" name="ID_MODES_PAIEMENT" not-null="true"/>
+      </key>
+      <one-to-many class="Modele.Commandes"/>
+    </set>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 12, 2018 9:59:39 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="Modele.Produits" optimistic-lock="version" schema="ETEAM1" table="PRODUITS">
+    <id name="codeProduit" type="string">
+      <column length="6" name="CODE_PRODUIT"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="Modele.Artisans" fetch="select" name="artisans">
+      <column length="2" name="ID_ARTISAN" not-null="true"/>
+    </many-to-one>
+    <property name="qtyProduit" type="short">
+      <column name="QTY_PRODUIT" not-null="true" precision="4" scale="0"/>
+    </property>
+    <property name="prixProduit" type="big_decimal">
+      <column name="PRIX_PRODUIT" precision="5"/>
+    </property>
+    <property name="photoProduit" type="string">
+      <column length="80" name="PHOTO_PRODUIT" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="produitsLangueses" table="PRODUITS_LANGUES">
+      <key>
+        <column length="6" name="CODE_PRODUIT" not-null="true"/>
+      </key>
+      <one-to-many class="Modele.ProduitsLangues"/>
+    </set>
+    <set fetch="select" inverse="false" lazy="false" name="ingredientses" table="PRODUITS_INGREDIENTS">
+      <key>
+        <column length="6" name="CODE_PRODUIT" not-null="true"/>
+      </key>
+      <many-to-many entity-name="Modele.Ingredients">
+        <column length="3" name="ID_INGREDIENT" not-null="true"/>
+      </many-to-many>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="lignesCommandes" table="LIGNES_COMMANDE">
+      <key>
+        <column length="6" name="CODE_PRODUIT" not-null="true"/>
+      </key>
+      <one-to-many class="Modele.LignesCommande"/>
+    </set>
+  </class>
+</hibernate-mapping>

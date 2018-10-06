@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 12, 2018 9:59:39 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="Modele.Commandes" optimistic-lock="version" schema="ETEAM1" table="COMMANDES">
+    <id name="idCommande" type="string">
+      <column length="5" name="ID_COMMANDE"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="Modele.ModesPaiement" fetch="select" name="modesPaiement">
+      <column length="3" name="ID_MODES_PAIEMENT" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="Modele.Clients" fetch="select" name="clients">
+      <column length="80" name="EMAIL" not-null="true"/>
+    </many-to-one>
+    <property name="dateCommande" type="string">
+      <column length="60" name="DATE_COMMANDE" not-null="true"/>
+    </property>
+    <property name="adresse" type="string">
+      <column length="300" name="ADRESSE" not-null="true"/>
+    </property>
+<!--    <property name="livraison" type="short">
+      <column name="LIVRAISON" not-null="true" precision="4" scale="0"/>
+    </property>-->
+    <set fetch="select" inverse="true" lazy="true" name="factureses" table="FACTURES">
+      <key>
+        <column length="5" name="ID_COMMANDE" not-null="true"/>
+      </key>
+      <one-to-many class="Modele.Factures"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="lignesCommandes" table="LIGNES_COMMANDE">
+      <key>
+        <column length="5" name="ID_COMMANDE" not-null="true"/>
+      </key>
+      <one-to-many class="Modele.LignesCommande"/>
+    </set>
+  </class>
+</hibernate-mapping>

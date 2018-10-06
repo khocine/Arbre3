@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 12, 2018 9:59:39 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="Modele.Clients" optimistic-lock="version" schema="ETEAM1" table="CLIENTS">
+    <id name="email" type="string">
+      <column length="80" name="EMAIL"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="titre" type="string">
+      <column length="80" name="TITRE" not-null="true"/>
+    </property>
+    <property name="nom" type="string">
+      <column length="60" name="NOM" not-null="true"/>
+    </property>
+    <property name="prenom" type="string">
+      <column length="60" name="PRENOM" not-null="true"/>
+    </property>
+    <property name="mdp" type="string">
+      <column length="25" name="MDP" not-null="true"/>
+    </property>
+    <property name="dateInscription" type="date">
+      <column length="7" name="DATE_INSCRIPTION" not-null="true"/>
+    </property>
+    <property name="adress" type="string">
+      <column length="500" name="ADRESS"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="commandeses" table="COMMANDES">
+      <key>
+        <column length="80" name="EMAIL" not-null="true"/>
+      </key>
+      <one-to-many class="Modele.Commandes"/>
+    </set>
+  </class>
+</hibernate-mapping>

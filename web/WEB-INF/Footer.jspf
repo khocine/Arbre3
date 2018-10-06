@@ -1,0 +1,25 @@
+<div class="footer_overlay">
+	<footer>
+		<div class="footer_background" style="background-image:url(Images/footer.jpg)"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="footer_content d-flex flex-lg-row flex-column align-items-center justify-content-lg-start justify-content-center ">
+						<div class="footer_logo "><a href="#" class="footer_text">SAVONDouDoux.</a></div>
+						<div class="copyright ml-auto mr-auto footer_text"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Savon DouDoux</div>
+						<div class="footer_social ml-lg-auto">
+							<ul>
+								<li><a href="#" ><i class="fa fa-pinterest footer_text" aria-hidden="true"></i></a></li>
+								<li><a href="#" ><i class="fa fa-instagram footer_text" aria-hidden="true"></i></a></li>
+								<li><a href="#" ><i class="fa fa-facebook footer_text" aria-hidden="true"></i></a></li>
+								<li><a href="#" ><i class="fa fa-twitter footer_text" aria-hidden="true"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+</div>
+
