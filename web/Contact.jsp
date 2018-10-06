@@ -1,7 +1,10 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale  value="fr_FR"  />
+
+<fmt:bundle basename="messages.MessagesBundle">
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<title>Checkout</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Sublime project">
@@ -15,10 +18,7 @@
 
 <div class="super_container">
 
-
-	
 	<!-- Home -->
-
 	<div class="home">
 		<div class="home_container">
 			<div class="home_background" style="background-image:url(Images/Head.jpg)"></div>
@@ -29,8 +29,10 @@
 							<div class="home_content">
 								<div class="breadcrumbs">
 									<ul>
-										<li><a href="index.jsp">Home</a></li>
-										<li>Contact</li>
+                                                                                <!--Home-->
+										<li><a href="index.jsp"><fmt:message key="header.Home" /></a></li>
+                                                                                <!--Contact-->
+										<li><fmt:message key="header.Contact" /></li>
 									</ul>
 								</div>
 							</div>
@@ -40,9 +42,7 @@
 			</div>
 		</div>
 	</div>
-
-	<!-- Checkout -->
-	
+                                                                        
 	<!-- Contact -->
 	
 	<div class="contact">
@@ -52,32 +52,34 @@
 				<!-- Get in touch -->
 				<div class="col-lg-8 contact_col">
 					<div class="get_in_touch">
-						<div class="section_title">BIENVENUE</div>
-						
+                                                <!--BIENVENUE-->
+						<div class="section_title"><fmt:message key="contact.Contact.Title" /></div>						
 						<div class="contact_form_container">
 							<form action="#" id="contact_form" class="contact_form">
 								<div class="row">
 									<div class="col-xl-6">
 										<!-- Name -->
-										<label for="contact_name">Nom*</label>
+										<label for="contact_name"><fmt:message key="contact.Contact.Name" /></label>
 										<input type="text" id="contact_name" class="contact_input" required="required">
 									</div>
 									<div class="col-xl-6 last_name_col">
 										<!-- Last Name -->
-										<label for="contact_last_name">Prénom*</label>
+										<label for="contact_last_name"><fmt:message key="contact.Contact.LastName" /></label>
 										<input type="text" id="contact_last_name" class="contact_input" required="required">
 									</div>
 								</div>
 								<div>
 									<!-- Subject -->
-									<label for="contact_company">Sujet</label>
+									<label for="contact_company"><fmt:message key="contact.Contact.Subject" /></label>
 									<input type="text" id="contact_company" class="contact_input">
 								</div>
 								<div>
-									<label for="contact_textarea">Message*</label>
+                                                                        <!--Message-->
+									<label for="contact_textarea"><fmt:message key="contact.Contact.Message" /></label>
 									<textarea id="contact_textarea" class="contact_input contact_textarea" required="required"></textarea>
 								</div>
-								<button class="button contact_button"><span>Envoyer le message</span></button>
+                                                                 <!--Send message-->
+								<button class="button contact_button"><span><fmt:message key="contact.Contact.Send" /></span></button>
 							</form>
 						</div>
 					</div>
@@ -87,24 +89,33 @@
 				<div class="col-lg-3 offset-xl-1 contact_col">
 					<div class="contact_info">
 						<div class="contact_info_section">
-							<div class="contact_info_title">Service entreprise</div>
+                                                        <!--Corporate service-->
+							<div class="contact_info_title"><fmt:message key="contact.Contact.Corporate" /></div>
 							<ul>
-								<li>Phone: <span>+(514) 256 4847</span></li>
-								<li>Email: <span>b2b@savondoudoux.com</span></li>
+                                                                <!--Phone + PhoneNumber-->
+								<li><fmt:message key="contact.Contact.Phone" /> <span><fmt:message key="contact.Contact.PhoneNumber" /></span></li>
+								<!--Email-->
+                                                                <li><fmt:message key="contact.Mail" /> <span><fmt:message key="contact.Mail.B2B" /></span></li>
 							</ul>
 						</div>
 						<div class="contact_info_section">
-							<div class="contact_info_title">Livraisons et retours</div>
+                                                        <!--Deliveries and returns-->
+							<div class="contact_info_title"><fmt:message key="contact.Contact.Delivery" /></div>
 							<ul>
-								<li>Phone: <span>+(514) 256 4848</span></li>
-								<li>Email: <span>delivery@savondoudoux.com</span></li>
+                                                                <!--Phone + PhoneNumber-->
+								<li><fmt:message key="contact.Contact.Phone" /> <span><fmt:message key="contact.Contact.PhoneNumber" /></span></li>
+								<!--Email-->
+                                                                <li><fmt:message key="contact.Mail" /> <span><fmt:message key="contact.Mail.Delivery" /></span></li>
 							</ul>
 						</div>
 						<div class="contact_info_section">
-							<div class="contact_info_title">Informations générales</div>
+                                                        <!--General informations-->
+							<div class="contact_info_title"><fmt:message key="contact.Contact.Infos" /></div>
 							<ul>
-								<li>Phone: <span>+(514) 256 4849</span></li>
-								<li>Email: <span>client@savondoudoux.com</span></li>
+                                                                <!--Phone + PhoneNumber-->
+								<li><fmt:message key="contact.Contact.Phone" /> <span><fmt:message key="contact.Contact.PhoneNumber" /></span></li>
+								<!--Email-->
+                                                                <li><fmt:message key="contact.Mail" /> <span><fmt:message key="contact.Mail.Client" /></span></li>
 							</ul>
 						</div>
 					</div>
@@ -146,3 +157,4 @@
 <script src="js/contact.js"></script>
 </body>
 </html>
+</fmt:bundle>
