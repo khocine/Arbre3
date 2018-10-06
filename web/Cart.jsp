@@ -1,13 +1,11 @@
-<%-- 
-    Document   : Cart
-    Created on : Sep 9, 2018, 4:04:29 PM
-    Author     : pc
---%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale  value="en_EN"  />
 
+<fmt:bundle basename="messages.MessagesBundle">
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<title>Cart</title>
+
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Sublime project">
@@ -39,9 +37,9 @@
 							<div class="home_content">
 								<div class="breadcrumbs">
 									<ul>
-										<li><a href="index.html">Home</a></li>
+										<li><a href="index.jsp"><fmt:message key="header.Home" /></a></li>
 									
-										<li>Shopping Cart</li>
+										<li><fmt:message key="header.Cart" /></li>
 									</ul>
 								</div>
 							</div>
@@ -60,10 +58,10 @@
 				<div class="col">
 					<!-- Column Titles -->
 					<div class="cart_info_columns clearfix">
-						<div class="cart_info_col cart_info_col_product">Produit</div>
-						<div class="cart_info_col cart_info_col_price">Prix</div>
-						<div class="cart_info_col cart_info_col_quantity">Quantité</div>
-						<div class="cart_info_col cart_info_col_total">Total</div>
+						<div class="cart_info_col cart_info_col_product"><fmt:message key="cart.ColumnTitles.Product" /></div>
+						<div class="cart_info_col cart_info_col_price"><fmt:message key="cart.ColumnTitles.Price" /></div>
+						<div class="cart_info_col cart_info_col_quantity"><fmt:message key="cart.ColumnTitles.Quantity" /></div>
+						<div class="cart_info_col cart_info_col_total"><fmt:message key="cart.ColumnTitles.Total" /></div>
 					</div>
 				</div>
 			</div>
@@ -111,10 +109,10 @@
 			<div class="row row_cart_buttons">
 				<div class="col">
 					<div class="cart_buttons d-flex flex-lg-row flex-column align-items-start justify-content-start">
-						<div class="button continue_shopping_button"><a href="Catalog.jsp">Continue shopping</a></div>
+						<div class="button continue_shopping_button"><a href="Catalog.jsp"><fmt:message key="cart.ButtonContinue" /></a></div>
 						<div class="cart_buttons_right ml-lg-auto">
-                                                    <div class="button clear_cart_button" onclick="clearCart()"><a href="" onclick="return false;">Clear cart</a></div>
-                                                    <div class="button update_cart_button" onclick="updateCart()"><a href="#" onclick="return false;">Update cart</a></div>
+                                                    <div class="button clear_cart_button" onclick="clearCart()"><a href="" onclick="return false;"><fmt:message key="cart.ButtonClear" /></a></div>
+                                                    <div class="button update_cart_button" onclick="updateCart()"><a href="#" onclick="return false;"><fmt:message key="cart.ButtonUpdate" /></a></div>
                                                     <input type="hidden" id = "action" name ="action" value=""/>
 						</div>
 					</div>
@@ -126,52 +124,63 @@
 					
 					<!-- Delivery -->
 					<div class="delivery">
-						<div class="section_title">Shipping method</div>
-						<div class="section_subtitle">Select the one you want</div>
+						<div class="section_title"><fmt:message key="cart.Delivery.Title" /></div>
+						<div class="section_subtitle"><fmt:message key="cart.Delivery.Subtitle" /></div>
 						<div class="delivery_options">
-                                                    <label class="delivery_option clearfix" >Next day delivery
+                                                        <!--Next day delivery-->
+                                                        <label class="delivery_option clearfix" ><fmt:message key="cart.Delivery.Option_1" />
 								<input type="radio" name="radio" value="${nextDayDelivery}" onclick="calculTotal()">
 								<span class="checkmark" id ="nextDayDelivery"  ></span>
 								<span class="delivery_price">$ ${nextDayDelivery}</span>
 							</label>
-							<label class="delivery_option clearfix">Standard delivery
+                                                        <!--Standard delivery-->
+							<label class="delivery_option clearfix"><fmt:message key="cart.Delivery.Option_2" />
 								<input type="radio" name="radio" value="${standardDelivery}" onclick="calculTotal()">
 								<span class="checkmark" id="standardDelivery"  ></span>
 								<span class="delivery_price">$ ${standardDelivery}</span>
 							</label>
-							<label class="delivery_option clearfix" >Personal pickup
+                                                        <!--Personal pickup-->
+							<label class="delivery_option clearfix" ><fmt:message key="cart.Delivery.Option_3" />
 								<input type="radio" checked="checked" name="radio" onclick="calculTotal()" value="0">
 								<span class="checkmark"></span>
-								<span class="delivery_price">Free</span>
+                                                                <!--Free-->
+								<span class="delivery_price"><fmt:message key="cart.Delivery.Option_3.Free" /></span>
 							</label>
 						</div>
 					</div>
 
 					
 				</div>
-
+                                <!--Cart total-->
 				<div class="col-lg-6 offset-lg-2">
 					<div class="cart_total">
-						<div class="section_title">Cart total</div>
-						<div class="section_subtitle">Final info</div>
+                                                <!--Cart total-->
+						<div class="section_title"><fmt:message key="cart.Total.Title" /></div>
+                                                <!--Final info-->
+						<div class="section_subtitle"><fmt:message key="cart.Total.Subtitle" /></div>
 						<div class="cart_total_container">
 							<ul>
 								<li class="d-flex flex-row align-items-center justify-content-start">
-									<div class="cart_total_title">Subtotal</div>
+                                                                        <!--Subtotal-->
+									<div class="cart_total_title"><fmt:message key="cart.Total.Subtotal" /></div>
 									<div class="cart_total_value ml-auto" id="subTotal">${total}</div>
 								</li>
 								<li class="d-flex flex-row align-items-center justify-content-start">
-									<div class="cart_total_title">Livraison</div>
-									<div class="cart_total_value ml-auto" id="Delivery">Free</div>
+                                                                        <!--Delivery-->
+									<div class="cart_total_title"><fmt:message key="cart.Total.Delivery" /></div>
+                                                                        <!--Free-->
+									<div class="cart_total_value ml-auto" id="Delivery"><fmt:message key="cart.Delivery.Option_3.Free" /></div>
 								</li>
 								<li class="d-flex flex-row align-items-center justify-content-start">
-									<div class="cart_total_title">Total TTC</div>
+                                                                        <!--Total TTC-->
+									<div class="cart_total_title"><fmt:message key="cart.Total.TTC" /></div>
                                                                         <div class="cart_total_value ml-auto" id="totalTTC">${totalTTC}</div>
                                                                         <input type="hidden" id="initialTTC" value="${totalTTC}">
 								</li>
 							</ul>
 						</div>
-						<div class="button checkout_button" onclick="checkout()"><a href="#" onclick="return false;">Proceed to checkout</a></div>
+                                                <!--Proceed to checkout-->
+						<div class="button checkout_button" onclick="checkout()"><a href="#" onclick="return false;"><fmt:message key="cart.Total.Checkout" /></a></div>
                                                 <input type="hidden" id="delivery_price" name="delivery_price" value="0"/>
 					</div>
 				</div>
@@ -200,3 +209,4 @@
 <script src="js/cart.js"></script>
 </body>
 </html>
+</fmt:bundle>
