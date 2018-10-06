@@ -104,10 +104,11 @@
                 <ul>    
                     <c:choose>
                         <c:when test="${connected eq true}">
-                            <li><fmt:message key="header.Wellcome" /> ${clientConnecte.prenom} <a target=_blank href="index.jsp"><i class="fa fa-sign-out"></i><fmt:message key="header.Logout" /></a></li>
+                                    
+				<li><fmt:message key="header.Wellcome" /> ${clientConnecte.prenom} <a href="User?connexion=toDeconnect"><i class="fa fa-sign-out"></i> <fmt:message key="header.Logout" /></a></li>
                         </c:when>
                             <c:otherwise>
-                            <li><a target=_blank href="User"><i class="fa fa-sign-in"></i><fmt:message key="header.Login" /></a></li>
+                                <li><a href="User?connexion=start"><i class="fa fa-sign-in"></i> <fmt:message key="header.Login" /></a></li>
                             </c:otherwise>
                     </c:choose>
                 </ul>
@@ -132,11 +133,11 @@
                         <c:choose>
                             <c:when test="${connected eq true}">
                         <!-- deconnexion -->
-                        <li class="page_menu_item menu_mm">${clientConnecte.prenom} <a href="index.jsp" style="display: inline;"><i class="fa fa-sign-out"></i><fmt:message key="header.Logout" /></a></li>
+                        <li class="page_menu_item menu_mm">${clientConnecte.prenom} <a href="User?connexion=toDeconnect" style="display: inline;"><i class="fa fa-sign-out"></i><fmt:message key="header.Logout" /></a></li>
                             </c:when>
                             <c:otherwise>
                         <!-- connexion -->
-                        <li class="page_menu_item menu_mm"><a href="User"><i class="fa fa-sign-in"></i><fmt:message key="header.Login" /></a></li>
+                        <li class="page_menu_item menu_mm"><a href="User?connexion=start"><i class="fa fa-sign-in"></i><fmt:message key="header.Login" /></a></li>
                             </c:otherwise>                        
                         </c:choose>
                     </ul>
