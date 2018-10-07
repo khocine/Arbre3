@@ -1,6 +1,6 @@
 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<fmt:setLocale  value="en_EN"  />
+<fmt:setLocale  value="${language}"  />
 
 <fmt:bundle basename="messages.MessagesBundle">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -32,7 +32,9 @@
                                     <ul>
                                         <li><a href="index.jsp"><fmt:message key="header.Home" /></a></li>
                                         <li><a href="Catalog.jsp"><fmt:message key="header.Products" /></a></li>
-                                        <li><a href="Contact.jsp"><fmt:message key="header.Contact" /></a></li>                                        
+                                        <li><a href="Contact.jsp"><fmt:message key="header.Contact" /></a></li> 
+                                        <li style="margin-right:5px"><a target=_blank href="Languages?langue=fr_FR"><img src="Images/fr.png" width="25" /></a></li>
+                                         <li><a target=_blank href="Languages?langue=en_EN"><img src="Images/en.png" width="25" /></a></li>
                                     </ul>
                                 </nav>
                                 <div class="header_extra ml-auto">
@@ -129,6 +131,8 @@
                         <li class="page_menu_item menu_mm"><a href="index.jsp"><fmt:message key="header.Home" /><i class="fa fa-angle-down"></i></a></li>
                         <li class="page_menu_item menu_mm"><a href="Catalog.jsp"><fmt:message key="header.Products" /><i class="fa fa-angle-down"></i></a></li>
                         <li class="page_menu_item menu_mm"><a href="Contact.jsp"><fmt:message key="header.Contact" /><i class="fa fa-angle-down"></i></a></li>
+                        <li class="page_menu_item menu_mm" style="margin-right:5px"><a target=_blank href="languages?langue="fr_FR""><img src="Images/fr.png" width="25" /></a></li>
+                        <li class="page_menu_item menu_mm"><a target=_blank href="languages?langue="en_EN""><img src="Images/en.png" width="25" /></a></li>
                         
                         <c:choose>
                             <c:when test="${connected eq true}">

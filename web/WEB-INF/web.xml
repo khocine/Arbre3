@@ -30,6 +30,10 @@
         <servlet-name>User</servlet-name>
         <servlet-class>control.User</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Languages</servlet-name>
+        <servlet-class>control.Languages</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MainServlet</servlet-name>
         <url-pattern>/MainServlet</url-pattern>
@@ -45,6 +49,10 @@
     <servlet-mapping>
         <servlet-name>User</servlet-name>
         <url-pattern>/User</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Languages</servlet-name>
+        <url-pattern>/Languages</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

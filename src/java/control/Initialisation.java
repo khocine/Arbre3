@@ -13,12 +13,14 @@ import java.io.IOException;
 
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
 
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -51,20 +53,57 @@ private String url;
        session = request.getSession();
 
         if (session == null) {
-            response.sendRedirect("http://localhost:82/error.html");
+            response.sendRedirect("/index.jsp");
         }
         
+        boolean match = false;
+        Locale locale = request.getLocale();
         Gestionnaire gs = new Gestionnaire();
+        List<Produits> group = gs.getGroupProducts(0, PRODUCT_PER_PAGE_CATALOG);
+       
+        session = request.getSession();
+       
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie c : cookies) {
+                if (c.getName().equals("langue")) {
+                    session.setAttribute("language", c.getValue());
+                    match = true;
+                    break;
+                }
+            }
+        }
+        if (!match) {
+            String language = locale.getLanguage();
+            switch (language) {
+                case "fr":
+                    session.setAttribute(language, "fr_FR");
+                    gs.setDetails("FR");
+                    session.setAttribute("langueDetail","FR");
+                    gs.setDetailsGroupProducts(group,"FR");
+                    break;
+                case "en":
+                    session.setAttribute(language, "en_EN");
+                    gs.setDetails("EN");
+                    session.setAttribute("langueDetail","EN");
+                    gs.setDetailsGroupProducts(group,"EN");
+                    break;
+              
+            }
+        }
+
         
-        gs.setDetails("FR");
+        
+        
+        
+        
        session.setAttribute("lastProducts", gs.getListeProduits());
        session.setAttribute("count", 0);
        session.setAttribute("gs",gs);
        session.setAttribute("nextDayDelivery", TaxeEtLivraison.nextDayDelivery);
        session.setAttribute("standardDelivery", TaxeEtLivraison.standardDelivery);
        session.setAttribute("connected",false);
-       List<Produits> group = gs.getGroupProducts(0, PRODUCT_PER_PAGE_CATALOG);
-       gs.setDetailsGroupProducts(group,"FR");
+       
        session.setAttribute("productsPerPage",group );
        session.setAttribute("triArtisans","Trier par artisans");
        session.setAttribute("all","1");
@@ -81,9 +120,7 @@ private String url;
        url = "/index.jsp";
             sc = getServletContext();
             rd = sc.getRequestDispatcher(url);
-            rd.forward(request, response);
-        
-    }
+            rd.forward(request, response);}
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
