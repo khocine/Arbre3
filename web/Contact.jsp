@@ -1,5 +1,4 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<fmt:setLocale  value="fr_FR"  />
 
 <fmt:bundle basename="messages.MessagesBundle">
 <!DOCTYPE html>
